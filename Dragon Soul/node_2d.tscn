@@ -1,0 +1,166 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6khqef3sx3ir"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_i208x"]
+[ext_resource type="Texture2D" uid="uid://csowd555vc50l" path="res://7kvGXEugWmM1MX39uuw8W7.jpg" id="1_puqse"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_lwp8n"]
+[ext_resource type="Texture2D" uid="uid://cjm4qg6a6foln" path="res://PlayerSpriteSheet.png" id="4_ldshh"]
+[ext_resource type="Texture2D" uid="uid://bcmr02q7n0ye5" path="res://Wooden Chest 1 -  Spritesheet.png" id="5_0bngs"]
+[ext_resource type="AudioStream" uid="uid://cptr83anvqxka" path="res://walk.mp3" id="5_tc27d"]
+[ext_resource type="AudioStream" uid="uid://bixny15y8geuh" path="res://chest.mp3" id="6_lyq7g"]
+
+[sub_resource type="Animation" id="Animation_uhy15"]
+resource_name = "chest_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtd7w"]
+_data = {
+"chest_open": SubResource("Animation_uhy15")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfj1e"]
+radius = 15.8114
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kj03g"]
+size = Vector2(42, 43.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a7sw4"]
+a = Vector2(-33, 1)
+b = Vector2(505, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbdxx"]
+size = Vector2(79, 77)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(750, -103)
+script = ExtResource("1_i208x")
+
+[node name="7KvGxEugWmM1mx39Uuw8w7" type="Sprite2D" parent="."]
+position = Vector2(191, 158)
+texture = ExtResource("1_puqse")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(192, 158)
+polygon = PackedVector2Array(28, 321, 76, 317, 124, 276, 81, 248, 81, 248, 57, 232, 234, 3, 312, 64, 316, -49, 495, -51, 498, -170, 515, -170, 570, -171, 574, -251, 587, -252, 691, -252, 692, -333, 736, -332, 737, -252, 799, -250, 802, -231, 808, 110, 789, 110, 786, -232, 588, -233, 587, -171, 586, -156, 514, -153, 512, -53, 737, -53, 736, -35, 740, 182, 807, 184, 809, 426, 766, 424, 762, 371, 729, 373, 727, 762, 762, 761, 761, 708, 806, 708, 804, 775, 788, 815, 764, 829, 757, 846, 743, 875, 761, 880, 752, 902, 735, 894, 744, 953, 775, 946, 794, 952, 789, 971, 801, 982, 870, 982, 906, 954, 893, 941, 908, 928, 920, 938, 929, 915, 917, 901, 894, 878, 907, 864, 934, 888, 925, 838, 888, 832, 894, 796, 859, 777, 854, 709, 898, 710, 897, 761, 927, 755, 933, 370, 897, 373, 897, 426, 849, 427, 851, 266, 876, 263, 877, -3, 864, -4, 866, -202, 883, -203, 884, -29, 935, -29, 943, -242, 908, -243, 910, -457, 1116, -659, 1118, -26, 1115, 48, 1093, -5, 941, -7, 940, 139, 1175, 140, 1171, 216, 1151, 217, 1132, 254, 1094, 278, 1065, 277, 1062, 765, 1361, 765, 1366, 284, 1317, 271, 1281, 241, 1273, 221, 1245, 219, 1239, 138, 1489, 143, 1491, -11, 1323, -9, 1316, 43, 1301, 44, 1305, -655, 1477, -475, 1480, -1145, 1309, -1155, 1305, -1168, 1268, -1265, 1266, -1318, 1465, -1318, 1475, -1966, 983, -1964, 981, -1315, 1181, -1312, 1179, -1256, 1137, -1149, 976, -1148, 975, -1180, 819, -1180, 818, -1067, 1130, -1063, 1125, -757, 930, -573, 735, -408, 710, -410, 691, -410, 689, -492, 705, -492, 706, -426, 802, -1049, 800, -1183, 962, -1293, 959, -1988, 1483, -1981, 1517, -1172, 1509, -457, 1489, -30, 1508, -18, 1511, 159, 1272, 195, 1382, 264, 1383, 766, 1384, 781, 1046, 779, 1049, 276, 890, 264, 885, 371, 886, 358, 946, 358, 943, 761, 950, 838, 950, 891, 934, 953, 873, 991, 784, 994, 731, 964, 727, 775, 710, 360, 738, 199, 331, -31, 328, 87, 149, 277, 104, 328, 59, 343, 0, 336, -47, 296, -82, 264, -101, 223, -96, 153, 36, -513, 705, -508, 705, -492, 491, -495, 492, -419, 526, -420, 528, -408, 449, -409, 449, -419, 482, -419, 481, -494, 366, -493, 367, -437, 144, -438, 145, -297, 137, -296, 135, -441, 54, -440, 52, -153, 129, -155, 133, -247, 92, -248, 91, -322, 97, -322, 99, -257, 142, -259, 140, -143, 54, -141, 52, -74, 86, -108, 175, -32, 0, 197, -69, 146, -79, 230)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1502, -574, 1487, -913, 1595, -913, 1602, -485)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(631, -190, 709, -189, 709, -177, 643, -178, 641, -73, 557, 39, 615, 37, 616, 46, 542, 50, 542, 41, 633, -83)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(410, -128)
+polygon = PackedVector2Array(-9, 2, -6, 36, 15, 62, 49, 72, 83, 62, 101, 34, 104, 2, 88, -25, 51, -44, 14, -34)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["File"]]
+position = Vector2(200, 400)
+script = ExtResource("2_lwp8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../../SwordChest/Sprite2D2")
+libraries = {
+"": SubResource("AnimationLibrary_vtd7w")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ldshh")
+hframes = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_hfj1e")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(1.6, 1.6)
+
+[node name="Label" type="Label" parent="CharacterBody2D/Camera2D"]
+offset_left = -337.0
+offset_top = 170.0
+offset_right = -336.0
+offset_bottom = 193.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../../Area2D/Sprite2D2")
+libraries = {
+"": SubResource("AnimationLibrary_vtd7w")
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../../Area2D2/Sprite2D2")
+libraries = {
+"": SubResource("AnimationLibrary_vtd7w")
+}
+
+[node name="walk" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("5_tc27d")
+volume_db = 2.557
+
+[node name="chest" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("6_lyq7g")
+volume_db = 4.0
+
+[node name="SwordChest" type="Area2D" parent="."]
+position = Vector2(-2, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordChest"]
+position = Vector2(287, -30)
+shape = SubResource("RectangleShape2D_kj03g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SwordChest"]
+position = Vector2(288, -27)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_0bngs")
+hframes = 5
+
+[node name="BossRun" type="Area2D" parent="."]
+position = Vector2(1187, -1404)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossRun"]
+shape = SubResource("SegmentShape2D_a7sw4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1020.5, 1042.5)
+shape = SubResource("RectangleShape2D_kbdxx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+position = Vector2(1022, 1040)
+scale = Vector2(0.537501, 0.7)
+texture = ExtResource("5_0bngs")
+hframes = 5
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(385, -218)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1020.5, 1042.5)
+shape = SubResource("RectangleShape2D_kbdxx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D2"]
+position = Vector2(1022, 1040)
+scale = Vector2(0.537501, 0.7)
+texture = ExtResource("5_0bngs")
+hframes = 5
+
+[connection signal="body_entered" from="SwordChest" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="SwordChest" to="CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BossRun" to="CharacterBody2D" method="_on_boss_run_body_entered"]
+[connection signal="body_entered" from="Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="CharacterBody2D" method="_on_area_2d_body_entered"]

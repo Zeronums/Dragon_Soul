@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvsssp6nxukuf"]
+
+[ext_resource type="Script" path="res://Ending.gd" id="1_oi2d2"]
+[ext_resource type="Texture2D" uid="uid://cbtvyv37vf8ak" path="res://wallpaperflare.com_wallpaper (1).jpg" id="1_q5k4o"]
+[ext_resource type="FontFile" uid="uid://qynjjhga04j4" path="res://OptimusPrinceps.ttf" id="3_bf0jk"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(575, 300)
+script = ExtResource("1_oi2d2")
+
+[node name="Wallpaperflare_comWallpaper(1)" type="Sprite2D" parent="."]
+position = Vector2(-77, -96)
+texture = ExtResource("1_q5k4o")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -23.0
+offset_right = 625.0
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 9
+theme_override_constants/shadow_offset_y = 9
+theme_override_constants/outline_size = 21
+theme_override_fonts/font = ExtResource("3_bf0jk")
+theme_override_font_sizes/font_size = 21
+text = "In the echoing cavern, the lone warrior stands over the fallen Dragon King.
+His weapon shimmering with victory.
+ Its once menacing eyes now glazed over in defeat. 
+With a final, feeble exhale, the tyrant surrenders.
+Thus ends the reign of the Dragon King. 
+The dragon's blood is rumored to possess unparalleled magical properties,
+ capable of granting extraordinary abilities or healing even the gravest of wounds.
+ Legends speak of its potency in alchemy, promising great power or immortality to those who wield it wisely. 
+Thus, adventurers seek it for personal gain or to protect their realm from impending threats.
+The kingdom erupts in jubilation, basking in newfound peace, celebrating the end of a dark era. 
+The warrior's name is forever etched in legend.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
